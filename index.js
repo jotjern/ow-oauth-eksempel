@@ -43,4 +43,4 @@ app.get("/callback", async (req, res, next) => {
 });
 
 app.use(express.static('public'));
-app.listen(3000, () => console.log("Server running on port 3000"));
+app.listen(3000, () => console.log("Kjører server på http://localhost:3000/"));
