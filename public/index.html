@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <title>Home</title>
+</head>
+<body>
+  <button onclick="window.location.href = '/login';">Login</button>
+
+  <pre id="profile" hidden></pre>
+
+  <script>
+      function parseCookies() {
+          const cookies = new Map();
+          document.cookie.split(';').forEach(function(cookie) {
+              const [key, value] = cookie.split('=');
+              cookies.set(key.trim(), value);
+          });
+          return cookies;
+      }
+
+      const cookies = parseCookies();
+
+      if (cookies.has('profile')) {
+          const profileData = JSON.parse(decodeURIComponent(parseCookies().get('profile')));
+
+          document.getElementById('profile').removeAttribute('hidden');
+          document.getElementById('profile').innerText = JSON.stringify(profileData, null, 2);
+      }
+  </script>
+</body>
+</html>
